@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+import RecipeListItem from './recipe_list_item';
 
 class RecipeList extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {};
-		this.getInitialState();
+		this.state = {"Bread": ["Water", "Flour"]};
+		this.getRecipes();
 	}
 
-	getInitialState() {
+	getRecipes() {
 		this.setState({
 			"Tarka Dal": 
 				["Chana Dal", 
@@ -23,21 +24,20 @@ class RecipeList extends Component {
 				"Garam Masala", 
 				"Ground Coriander", 
 				"Black Pepper",
-				"Fresh Coriander"]
-			, 
+				"Fresh Coriander"], 
 			"Cup o' Tea": 
 				["Teabag", 
 				"Hot Water", 
 				"Milk (Optional)",
 				"Sugar (Optional)"]
 			});
-		console.log(this.state);
 	}
 
 	render() {
 		return (
 			<div className='recipe-list'>
-				<h1>Hey There!</h1>
+				<h1>asdf</h1>
+				<RecipeListItem recipes={this.state} />
 			</div>
 		)
 	} 
