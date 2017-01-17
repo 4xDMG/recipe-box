@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
+import IngredientList from "./ingredient_list";
 
 class RecipeListItem extends Component {
-	constructor(props) {
-		super(props);
+	displayIngredients(props) {
+		this.props.ingredients.map((ingredient, index) => {
+			return (
+					<IngredientList ingredient={ingredient} />
+			)
+		});
 	}
-
-	getRecipes(props) {
-		const recipeArr = Object.keys(this.props.recipes);
-		return recipeArr[0];
-	}
-	
 
 	render() {
 		return (
-			<h2>{this.getRecipes()}</h2>
+			<div>
+				<h2>{this.props.recipe}</h2>
+				<ul>{this.displayIngredients()}</ul>
+			</div>
 		)
 	}
 	

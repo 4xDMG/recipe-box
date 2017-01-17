@@ -1,46 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import RecipeListItem from './recipe_list_item';
 
-class RecipeList extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {"Bread": ["Water", "Flour"]};
-		this.getRecipes();
-	}
-
-	getRecipes() {
-		this.setState({
-			"Tarka Dal": 
-				["Chana Dal", 
-				"Vegetable Oil", 
-				"Cumin Seeds", 
-				"Onion", 
-				"Green Chillies", 
-				"Ginger", 
-				"Garlic", 
-				"Tomatoes", 
-				"Tumeric", 
-				"Garam Masala", 
-				"Ground Coriander", 
-				"Black Pepper",
-				"Fresh Coriander"], 
-			"Cup o' Tea": 
-				["Teabag", 
-				"Hot Water", 
-				"Milk (Optional)",
-				"Sugar (Optional)"]
-			});
-	}
-
-	render() {
+const RecipeList = (props) => {
+	const recipeArr = Object.keys(props.recipes);
+	const recipeKeys = recipeArr.map((recipe, index) => {
+		index++;
 		return (
-			<div className='recipe-list'>
-				<h1>asdf</h1>
-				<RecipeListItem recipes={this.state} />
-			</div>
+			<RecipeListItem 
+				recipe={recipe}
+				key={index}
+				ingredients={props.recipes[recipe]}
+			/>
 		)
-	} 
+	});
+
+	return (
+		<div className='recipe-list'>
+			{recipeKeys}
+		</div>
+	)
 }
 
 export default RecipeList;
