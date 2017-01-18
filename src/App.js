@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import RecipeList from './components/recipe_list';
+import AddRecipe from './components/add_recipe';
 
 class App extends Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class App extends Component {
           <h2>My Recipe Box</h2>
         </div>
         <RecipeList recipes={this.state} />
+        <AddRecipe />
       </div>
     );
   }
