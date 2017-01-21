@@ -8,6 +8,8 @@ class App extends Component {
     super(props);
 
     this.state = {"Bread": ["Water", "Flour"], "Corn Bread": ["Cornmeal", "Water"]};
+
+    this.HandleAddRecipe = this.HandleAddRecipe.bind(this);
   }
 
   /*getRecipes() {
@@ -37,6 +39,13 @@ class App extends Component {
     
   }*/
 
+  HandleAddRecipe(recipe, ingredients) {
+    let stateHolder = this.state;
+    console.log(stateHolder);
+    //stateHolder.recipe = ingredients;
+    //this.setState(stateHolder);
+  }
+
   render() {
     return (
       <div className="App">
@@ -44,7 +53,7 @@ class App extends Component {
           <h2>My Recipe Box</h2>
         </div>
         <RecipeList recipes={this.state} />
-        <AddRecipe />
+        <AddRecipe  AddNewRecipe={() => this.HandleAddRecipe} />
       </div>
     );
   }
