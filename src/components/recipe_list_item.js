@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import IngredientList from "./ingredient_list";
-import EditRecipe from "./edit_recipe_item";
-import DeleteRecipe from "./delete_recipe_item";
+import EditRecipeForm from "./edit_recipe_form";
+
 
 class RecipeListItem extends Component {
 	constructor(props) {
 		super(props);
 
-		const recipeId=this.props.recipe.replace(" ", "");
-		const ingredientsId=recipeId+"Ingedients";
+		const recipeId=this.props.recipe.replace(/ /g, "-");
+		const ingredientsId=recipeId+"-Ingredients";
 		this.state = {recipeId, ingredientsId};
 	}
 
@@ -30,15 +30,22 @@ class RecipeListItem extends Component {
 		}
 	}
 
+	displayEditIngredients(id) {
+		let ingredients = JSON.parse(JSON.stringify(this.props.ingredients));
+		ingredients = ingredients.join();
+		document.getElementById(this.state.recipeId + "-ingredients-to-edit").value = ingredients;
+	}
+
 	render() {
 		return (
 			<div>
 				<h2 id={this.state.recipeId} onClick={() => this.displayIngredients(this.state.ingredientsId)}>{this.props.recipe}</h2>
 				<span id={this.state.ingredientsId} className='hidden'>
 					{this.generateIngredients()}
-					<EditRecipe />
-					<DeleteRecipe />
+					<button onClick={() => this.displayEditIngredients(this.state.recipeId + "-ingredients-to-edit")}>Edit</button>
+					<button>Delete</button>
 				</span>
+				<EditRecipeForm recipe={this.props.recipe} ingredients={this.props.ingredients} />
 			</div>
 		)
 	}

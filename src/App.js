@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import RecipeList from './components/recipe_list';
-import AddRecipe from './components/add_recipe';
+import AddRecipeForm from './components/add_recipe_form';
 
 class App extends Component {
   constructor(props) {
@@ -41,9 +41,17 @@ class App extends Component {
 
   HandleAddRecipe(recipe, ingredients) {
     let stateHolder = this.state;
-    console.log(stateHolder);
-    //stateHolder.recipe = ingredients;
-    //this.setState(stateHolder);
+    const ingredientsArr = ingredients.replace(/ /g,"").split(",");
+    stateHolder[recipe] = ingredientsArr;
+    this.setState(stateHolder);
+  }
+
+  displayAddRecipeDialog(id) {
+    if (document.getElementById(id).classList.contains("hidden")) {
+      document.getElementById(id).classList.remove("hidden");
+    } else {
+      document.getElementById(id).classList.add("hidden");
+    }
   }
 
   render() {
@@ -53,7 +61,8 @@ class App extends Component {
           <h2>My Recipe Box</h2>
         </div>
         <RecipeList recipes={this.state} />
-        <AddRecipe  AddNewRecipe={() => this.HandleAddRecipe} />
+        <button onClick={() => this.displayAddRecipeDialog('add-recipe-dialog')}>Add Recipe</button>
+        <AddRecipeForm AddNewRecipe={this.HandleAddRecipe} />    
       </div>
     );
   }
