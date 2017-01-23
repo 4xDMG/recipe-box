@@ -10,6 +10,7 @@ const RecipeList = (props) => {
 				recipe={recipe}
 				key={index}
 				ingredients={props.recipes[recipe]}
+				EditRecipe={props.EditRecipe}
 			/>
 		)
 	});

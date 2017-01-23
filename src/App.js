@@ -10,6 +10,7 @@ class App extends Component {
     this.state = {"Bread": ["Water", "Flour"], "Corn Bread": ["Cornmeal", "Water"]};
 
     this.HandleAddRecipe = this.HandleAddRecipe.bind(this);
+    this.HandleEditRecipe = this.HandleEditRecipe.bind(this);
   }
 
   /*getRecipes() {
@@ -46,6 +47,11 @@ class App extends Component {
     this.setState(stateHolder);
   }
 
+  HandleEditRecipe(/*oldRecipeName, newRecipeName, ingredients*/) {
+    let stateHolder = this.state;
+    console.log(stateHolder);
+  }
+
   displayAddRecipeDialog(id) {
     if (document.getElementById(id).classList.contains("hidden")) {
       document.getElementById(id).classList.remove("hidden");
@@ -60,7 +66,7 @@ class App extends Component {
         <div className="App-header">
           <h2>My Recipe Box</h2>
         </div>
-        <RecipeList recipes={this.state} />
+        <RecipeList recipes={this.state} EditRecipe={this.HandleEditRecipe} />
         <button onClick={() => this.displayAddRecipeDialog('add-recipe-dialog')}>Add Recipe</button>
         <AddRecipeForm AddNewRecipe={this.HandleAddRecipe} />    
       </div>

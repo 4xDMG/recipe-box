@@ -4,10 +4,11 @@ class EditRecipeForm extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {recipe: this.props.recipe, ingredients: this.props.ingredients, recipeID: this.props.recipe.replace(/ /g, "-")};
+		this.state = {recipe: this.props.recipe, ingredients: this.props.ingredients.join(","), recipeID: this.props.recipe.replace(/ /g, "-")};
 		this.HandleRecipeChange = this.HandleRecipeChange.bind(this);
 		this.HandleIngredientsChange = this.HandleIngredientsChange.bind(this);
 		this.HandleRecipeSubmit = this.HandleRecipeSubmit.bind(this);
+
 	}	 
 
 	/*displayIngredients(id) {
@@ -30,14 +31,14 @@ class EditRecipeForm extends Component {
 		const stateHolder = this.state;
 		stateHolder.ingredients = event.target.value;
 		this.setState(stateHolder);
-		
 	}
 
 	HandleRecipeSubmit(event) {
-		const recipe = this.state.recipe;
+		this.props.EditRecipe();
+		/*const recipe = this.state.recipe;
 		const ingredients = this.state.ingredients
 		this.props.AddNewRecipe(recipe, ingredients);
-		document.getElementById("add-recipe-dialog").classList.add("hidden");
+		document.getElementById("add-recipe-dialog").classList.add("hidden");*/
 		event.preventDefault();
 	}
 
@@ -49,7 +50,7 @@ class EditRecipeForm extends Component {
           			<input type="text" name="recipe-name" id={this.state.recipeID + "to-edit"} onChange={this.HandleRecipeChange} value={this.state.recipe} />
           			<br />
           			<label htmlFor="ingredients">Ingredients (Seperated by a comma): </label>
-          			<input type="text" name="ingredients" id={this.state.recipeID + "-ingredients-to-edit"} onChange={this.HandleIngredientsChange} value="" />
+          			<input type="text" name="ingredients" id={this.state.recipeID + "-ingredients-to-edit"} onChange={this.HandleIngredientsChange} value={this.state.ingredients} />
           			<br />
           			<input 
           				type="submit" 

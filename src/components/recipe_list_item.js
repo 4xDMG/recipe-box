@@ -10,7 +10,6 @@ class RecipeListItem extends Component {
 		const recipeId=this.props.recipe.replace(/ /g, "-");
 		const ingredientsId=recipeId+"-Ingredients";
 		this.state={recipeId, ingredientsId};
-		console.log(this.state);
 	}
 
 	generateIngredients(props) {
@@ -47,7 +46,7 @@ class RecipeListItem extends Component {
 					<button onClick={() => this.displayEditIngredients(this.state.recipeId + "-ingredients-to-edit")}>Edit</button>
 					<button>Delete</button>
 				</span>
-				<EditRecipeForm recipe={this.props.recipe} ingredients={this.props.ingredients} />
+				<EditRecipeForm recipe={this.props.recipe} ingredients={this.props.ingredients} EditRecipe={this.props.EditRecipe} />
 			</div>
 		)
 	}

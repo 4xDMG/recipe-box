@@ -26,8 +26,6 @@
 
 .dialog {
   background-color: gray;
-  height:1000px;
-  width:1000px;
   z-index: 3;
 }
 
