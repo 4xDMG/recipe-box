@@ -43,7 +43,7 @@ class EditRecipeForm extends Component {
 
 	render() {
 		return (
-			<div id="edit-recipe-dialog" className="dialog hidden" >
+			<div id={this.state.recipeID + "-edit-recipe-dialog"} className="dialog hidden" >
         		<form onSubmit={this.HandleRecipeSubmit}>
          			<label htmlFor="recipe-name">Recipe Name: </label>
           			<input type="text" name="recipe-name" id={this.state.recipeID + "to-edit"} onChange={this.HandleRecipeChange} value={this.state.recipe} />

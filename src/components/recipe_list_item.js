@@ -9,7 +9,8 @@ class RecipeListItem extends Component {
 
 		const recipeId=this.props.recipe.replace(/ /g, "-");
 		const ingredientsId=recipeId+"-Ingredients";
-		this.state = {recipeId, ingredientsId};
+		this.state={recipeId, ingredientsId};
+		console.log(this.state);
 	}
 
 	generateIngredients(props) {
@@ -31,6 +32,7 @@ class RecipeListItem extends Component {
 	}
 
 	displayEditIngredients(id) {
+		this.displayIngredients(this.state.recipeId + "-edit-recipe-dialog");
 		let ingredients = JSON.parse(JSON.stringify(this.props.ingredients));
 		ingredients = ingredients.join();
 		document.getElementById(this.state.recipeId + "-ingredients-to-edit").value = ingredients;
