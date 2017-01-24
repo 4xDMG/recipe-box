@@ -44,7 +44,7 @@ class RecipeListItem extends Component {
 				<span id={this.state.ingredientsId} className='hidden'>
 					{this.generateIngredients()}
 					<button onClick={() => this.displayEditIngredients(this.state.recipeId + "-ingredients-to-edit")}>Edit</button>
-					<button>Delete</button>
+					<button onClick={this.props.DeleteRecipe(this.props.recipe)}>Delete</button>
 				</span>
 				<EditRecipeForm recipe={this.props.recipe} ingredients={this.props.ingredients} EditRecipe={this.props.EditRecipe} />
 			</div>

@@ -11,6 +11,7 @@ const RecipeList = (props) => {
 				key={index}
 				ingredients={props.recipes[recipe]}
 				EditRecipe={props.EditRecipe}
+				DeleteRecipe={props.DeleteRecipe}
 			/>
 		)
 	});

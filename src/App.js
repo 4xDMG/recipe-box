@@ -11,6 +11,7 @@ class App extends Component {
 
     this.HandleAddRecipe = this.HandleAddRecipe.bind(this);
     this.HandleEditRecipe = this.HandleEditRecipe.bind(this);
+    this.HandleDeleteRecipe = this.HandleDeleteRecipe.bind(this);
   }
 
   /*getRecipes() {
@@ -49,13 +50,23 @@ class App extends Component {
 
   HandleEditRecipe(oldRecipeName, newRecipeName, ingredients) {
     let stateHolder = this.state;
+    console.log(oldRecipeName + ' ' + newRecipeName);
     if (oldRecipeName === newRecipeName) {
       stateHolder[newRecipeName] = ingredients.split(",");
       this.setState(stateHolder);
     } else {
       stateHolder[newRecipeName] = stateHolder[oldRecipeName];
       delete stateHolder[oldRecipeName];
-      stateHolder[newRecipeName] = ingredients;
+      stateHolder[newRecipeName] = ingredients.split(",");
+      this.setState(stateHolder);
+    }
+  }
+
+  HandleDeleteRecipe(recipe) {
+    let deleteRecipe = confirm("Are you sure you want to delete this recipe?");
+    let stateHolder = this.state;
+    if (deleteRecipe === true) {
+      delete stateHolder[recipe];
       this.setState(stateHolder);
     }
   }
@@ -74,7 +85,7 @@ class App extends Component {
         <div className="App-header">
           <h2>My Recipe Box</h2>
         </div>
-        <RecipeList recipes={this.state} EditRecipe={this.HandleEditRecipe} />
+        <RecipeList recipes={this.state} EditRecipe={this.HandleEditRecipe} DeleteRecipe={this.HandleDeleteRecipe} />
         <button onClick={() => this.displayAddRecipeDialog('add-recipe-dialog')}>Add Recipe</button>
         <AddRecipeForm AddNewRecipe={this.HandleAddRecipe} />    
       </div>
