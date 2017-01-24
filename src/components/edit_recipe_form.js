@@ -34,11 +34,10 @@ class EditRecipeForm extends Component {
 	}
 
 	HandleRecipeSubmit(event) {
-		this.props.EditRecipe();
-		/*const recipe = this.state.recipe;
+		const recipe = this.state.recipe;
 		const ingredients = this.state.ingredients
-		this.props.AddNewRecipe(recipe, ingredients);
-		document.getElementById("add-recipe-dialog").classList.add("hidden");*/
+		this.props.EditRecipe(this.props.recipe, recipe, ingredients);
+		document.getElementById(this.state.recipeID + "-edit-recipe-dialog").classList.add("hidden");
 		event.preventDefault();
 	}
 

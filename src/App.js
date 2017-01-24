@@ -47,9 +47,17 @@ class App extends Component {
     this.setState(stateHolder);
   }
 
-  HandleEditRecipe(/*oldRecipeName, newRecipeName, ingredients*/) {
+  HandleEditRecipe(oldRecipeName, newRecipeName, ingredients) {
     let stateHolder = this.state;
-    console.log(stateHolder);
+    if (oldRecipeName === newRecipeName) {
+      stateHolder[newRecipeName] = ingredients.split(",");
+      this.setState(stateHolder);
+    } else {
+      stateHolder[newRecipeName] = stateHolder[oldRecipeName];
+      delete stateHolder[oldRecipeName];
+      stateHolder[newRecipeName] = ingredients;
+      this.setState(stateHolder);
+    }
   }
 
   displayAddRecipeDialog(id) {
