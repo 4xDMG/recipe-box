@@ -7,6 +7,14 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    /*const initialRecipes = () => {
+      if (localStorage[recipes]) {
+        //return localStorage[recipes];
+      } else {
+        return {"Bread": ["Water", "Flour"], "Corn Bread": ["Cornmeal", "Water"]};
+      }
+    }*/
+
     this.state = {"Bread": ["Water", "Flour"], "Corn Bread": ["Cornmeal", "Water"]};
 
     this.HandleAddRecipe = this.HandleAddRecipe.bind(this);
@@ -14,7 +22,7 @@ class App extends Component {
     this.HandleDeleteRecipe = this.HandleDeleteRecipe.bind(this);
   }
 
-  /*getRecipes() {
+  getRecipes() {
     
       this.setState({
       "Tarka Dal": 
@@ -39,7 +47,7 @@ class App extends Component {
       });
       console.log(this.state);
     
-  }*/
+  }
 
   HandleAddRecipe(recipe, ingredients) {
     let stateHolder = this.state;
