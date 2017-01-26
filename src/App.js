@@ -7,15 +7,18 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    /*const initialRecipes = () => {
-      if (localStorage[recipes]) {
-        //return localStorage[recipes];
+    const getInitialRecipes = () => {
+      if (localStorage["recipes"]) {
+        return JSON.parse(localStorage["recipes"]);
       } else {
         return {"Bread": ["Water", "Flour"], "Corn Bread": ["Cornmeal", "Water"]};
       }
-    }*/
+    }
 
-    this.state = {"Bread": ["Water", "Flour"], "Corn Bread": ["Cornmeal", "Water"]};
+    const initialRecipes = getInitialRecipes();
+    console.log(localStorage["recipes"]);
+
+    this.state = initialRecipes;
 
     this.HandleAddRecipe = this.HandleAddRecipe.bind(this);
     this.HandleEditRecipe = this.HandleEditRecipe.bind(this);
@@ -54,6 +57,7 @@ class App extends Component {
     const ingredientsArr = ingredients.replace(/ /g,"").split(",");
     stateHolder[recipe] = ingredientsArr;
     this.setState(stateHolder);
+    localStorage["recipes"] = JSON.stringify(stateHolder);
   }
 
   HandleEditRecipe(oldRecipeName, newRecipeName, ingredients) {
@@ -62,11 +66,13 @@ class App extends Component {
     if (oldRecipeName === newRecipeName) {
       stateHolder[newRecipeName] = ingredients.split(",");
       this.setState(stateHolder);
+      localStorage["recipes"] = JSON.stringify(stateHolder);
     } else {
       stateHolder[newRecipeName] = stateHolder[oldRecipeName];
       delete stateHolder[oldRecipeName];
       stateHolder[newRecipeName] = ingredients.split(",");
       this.setState(stateHolder);
+      localStorage["recipes"] = JSON.stringify(stateHolder);
     }
   }
 
@@ -76,6 +82,7 @@ class App extends Component {
     if (deleteRecipe === true) {
       delete stateHolder[recipe];
       this.setState(stateHolder);
+      localStorage["recipes"] = JSON.stringify(stateHolder);
     }
   }
 
