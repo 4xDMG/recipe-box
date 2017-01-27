@@ -41,6 +41,10 @@ class EditRecipeForm extends Component {
 		event.preventDefault();
 	}
 
+	CancelEditRecipe(id) {
+		document.getElementById(id).classList.add("hidden");
+	}
+
 	render() {
 		return (
 			<div id={this.state.recipeID + "-edit-recipe-dialog"} className="dialog hidden" >
@@ -56,7 +60,7 @@ class EditRecipeForm extends Component {
           				type="submit" 
           				value="Edit" 
           			/>
-          			<button>Cancel</button>
+          			<button type="button" onClick={() => this.CancelEditRecipe(this.state.recipeID + "-edit-recipe-dialog")}>Cancel</button>
         		</form>
         		</div>
       	</div>

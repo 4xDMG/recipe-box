@@ -34,7 +34,6 @@ class AddRecipeForm extends Component {
 
 	CancelAddRecipe(id) {
     	document.getElementById(id).classList.add("hidden");
-    	event.preventDefault();
   	}
 
 	render() {
@@ -52,7 +51,7 @@ class AddRecipeForm extends Component {
           				type="submit" 
           				value="Submit" 
           			/>
-          			<button onClick={() => this.CancelAddRecipe('add-recipe-dialog')}>Cancel</button>
+          			<button type="button" onClick={() => this.CancelAddRecipe('add-recipe-dialog')}>Cancel</button>
         		</form>
         		</div>
       	</div>
