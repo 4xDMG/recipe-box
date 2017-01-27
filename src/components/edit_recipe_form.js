@@ -44,18 +44,21 @@ class EditRecipeForm extends Component {
 	render() {
 		return (
 			<div id={this.state.recipeID + "-edit-recipe-dialog"} className="dialog hidden" >
-        		<form onSubmit={this.HandleRecipeSubmit}>
+				<div className="form-wrapper">
+        		<form onSubmit={this.HandleRecipeSubmit} className="edit-form">
          			<label htmlFor="recipe-name">Recipe Name: </label>
           			<input type="text" name="recipe-name" id={this.state.recipeID + "to-edit"} onChange={this.HandleRecipeChange} value={this.state.recipe} />
           			<br />
-          			<label htmlFor="ingredients">Ingredients (Seperated by a comma): </label>
+          			<label htmlFor="ingredients">Ingredients: </label>
           			<input type="text" name="ingredients" id={this.state.recipeID + "-ingredients-to-edit"} onChange={this.HandleIngredientsChange} value={this.state.ingredients} />
           			<br />
           			<input 
           				type="submit" 
           				value="Edit" 
           			/>
+          			<button>Cancel</button>
         		</form>
+        		</div>
       	</div>
       	)
 	}

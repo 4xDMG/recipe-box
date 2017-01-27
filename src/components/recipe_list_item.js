@@ -39,13 +39,13 @@ class RecipeListItem extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className='recipe-list-item'>
 				<h2 id={this.state.recipeId} onClick={() => this.displayIngredients(this.state.ingredientsId)}>{this.props.recipe}</h2>
-				<span id={this.state.ingredientsId} className='hidden'>
+				<div id={this.state.ingredientsId} className='recipe-ingredients-item hidden'>				
 					{this.generateIngredients()}
-					<button onClick={() => this.displayEditIngredients(this.state.recipeId + "-ingredients-to-edit")}>Edit</button>
-					<button onClick={() => this.props.DeleteRecipe(this.props.recipe)}>Delete</button>
-				</span>
+					<button onClick={() => this.displayEditIngredients(this.state.recipeId + "-ingredients-to-edit")} className='edit-btn'>Edit</button>
+					<button onClick={() => this.props.DeleteRecipe(this.props.recipe)} className='delete-btn'>Delete</button>				
+				</div>
 				<EditRecipeForm recipe={this.props.recipe} ingredients={this.props.ingredients} EditRecipe={this.props.EditRecipe} />
 			</div>
 		)

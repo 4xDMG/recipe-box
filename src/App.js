@@ -16,40 +16,12 @@ class App extends Component {
     }
 
     const initialRecipes = getInitialRecipes();
-    console.log(localStorage["recipes"]);
 
     this.state = initialRecipes;
 
     this.HandleAddRecipe = this.HandleAddRecipe.bind(this);
     this.HandleEditRecipe = this.HandleEditRecipe.bind(this);
     this.HandleDeleteRecipe = this.HandleDeleteRecipe.bind(this);
-  }
-
-  getRecipes() {
-    
-      this.setState({
-      "Tarka Dal": 
-        ["Chana Dal", 
-        "Vegetable Oil", 
-        "Cumin Seeds", 
-        "Onion", 
-        "Green Chillies", 
-        "Ginger", 
-        "Garlic", 
-        "Tomatoes", 
-        "Tumeric", 
-        "Garam Masala", 
-        "Ground Coriander", 
-        "Black Pepper",
-        "Fresh Coriander"], 
-      "Cup o' Tea": 
-        ["Teabag", 
-        "Hot Water", 
-        "Milk (Optional)",
-        "Sugar (Optional)"]
-      });
-      console.log(this.state);
-    
   }
 
   HandleAddRecipe(recipe, ingredients) {
@@ -101,7 +73,7 @@ class App extends Component {
           <h2>My Recipe Box</h2>
         </div>
         <RecipeList recipes={this.state} EditRecipe={this.HandleEditRecipe} DeleteRecipe={this.HandleDeleteRecipe} />
-        <button onClick={() => this.displayAddRecipeDialog('add-recipe-dialog')}>Add Recipe</button>
+        <button onClick={() => this.displayAddRecipeDialog('add-recipe-dialog')} className='add-btn'>Add Recipe</button>
         <AddRecipeForm AddNewRecipe={this.HandleAddRecipe} />    
       </div>
     );

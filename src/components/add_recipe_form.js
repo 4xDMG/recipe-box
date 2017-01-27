@@ -32,21 +32,29 @@ class AddRecipeForm extends Component {
 		event.preventDefault();
 	}
 
+	CancelAddRecipe(id) {
+    	document.getElementById(id).classList.add("hidden");
+    	event.preventDefault();
+  	}
+
 	render() {
 		return (
 			<div id="add-recipe-dialog" className="dialog hidden" >
-        		<form onSubmit={this.HandleRecipeSubmit}>
+				<div className="form-wrapper">
+        		<form onSubmit={this.HandleRecipeSubmit} className="add-form">
          			<label htmlFor="recipe-name">Recipe Name: </label>
           			<input type="text" name="recipe-name" id="recipe-to-add" onChange={this.HandleRecipeChange} value={this.state.recipe} />
           			<br />
-          			<label htmlFor="ingredients">Ingredients (Seperated by a comma): </label>
-          			<input type="text" name="ingredients" id="ingredients-to-add" onChange={this.HandleIngredientsChange} />
+          			<label htmlFor="ingredients">Ingredients: </label>
+          			<input type="text" name="ingredients" id="ingredients-to-add" placeholder="Sepeate,ingedients,with,commas" onChange={this.HandleIngredientsChange} />
           			<br />
           			<input 
           				type="submit" 
           				value="Submit" 
           			/>
+          			<button onClick={() => this.CancelAddRecipe('add-recipe-dialog')}>Cancel</button>
         		</form>
+        		</div>
       	</div>
       	)
 	}
