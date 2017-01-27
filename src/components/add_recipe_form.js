@@ -45,7 +45,7 @@ class AddRecipeForm extends Component {
           			<input type="text" name="recipe-name" id="recipe-to-add" onChange={this.HandleRecipeChange} value={this.state.recipe} />
           			<br />
           			<label htmlFor="ingredients">Ingredients: </label>
-          			<input type="text" name="ingredients" id="ingredients-to-add" placeholder="Sepeate,ingedients,with,commas" onChange={this.HandleIngredientsChange} />
+          			<input type="text" name="ingredients" id="ingredients-to-add" placeholder="Seperate,ingredients,with,commas" onChange={this.HandleIngredientsChange} />
           			<br />
           			<input 
           				type="submit" 

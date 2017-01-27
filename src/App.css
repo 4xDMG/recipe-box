@@ -1,0 +1,128 @@
+@media (min-width: 510px) {
+  .edit-form, .add-form {
+    width: 500px !important; } }
+
+body {
+  margin: 0;
+  padding: 0; }
+
+.App {
+  text-align: center;
+  min-height: 100vh;
+  background-color: #4ABDAC; }
+
+.App-header {
+  background-color: #F7B733;
+  height: 70px;
+  padding: 20px;
+  color: #FC4A1A;
+  margin: 0; }
+
+.App-intro {
+  font-size: large; }
+
+.recipe-list {
+  margin: 0 auto;
+  color: #DFDCE3;
+  padding: 10px; }
+  .recipe-list h2 {
+    margin: 0;
+    padding: 10px; }
+  .recipe-list .recipe-list-item {
+    border: 2px solid #F7B733;
+    margin-top: 10px;
+    text-align: center; }
+    .recipe-list .recipe-list-item ul {
+      padding: 10px;
+      color: #FC4A1A;
+      font-size: 1.2em;
+      list-style-type: none; }
+    .recipe-list .recipe-list-item .recipe-ingredients-item {
+      background-color: #DFDCE3;
+      width: 100%;
+      margin: auto;
+      border-top: 1px solid #F7B733; }
+    .recipe-list .recipe-list-item .edit-btn {
+      background-color: #4ABDAC;
+      color: #DFDCE3;
+      font-size: 1em;
+      font-weight: bold;
+      margin: 10px;
+      padding: 10px;
+      border-radius: 10px;
+      width: 150px; }
+    .recipe-list .recipe-list-item .delete-btn {
+      background-color: #FC4A1A;
+      color: #DFDCE3;
+      font-size: 1em;
+      font-weight: bold;
+      margin: 10px;
+      padding: 10px;
+      border-radius: 10px;
+      width: 150px; }
+
+.add-btn {
+  background-color: #DFDCE3;
+  color: #4ABDAC;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  width: 200px; }
+
+.hidden {
+  display: none; }
+
+.dialog {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 3; }
+
+.form-wrapper {
+  position: absolute;
+  max-height: 230px;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto; }
+
+.edit-form, .add-form {
+  margin: auto;
+  padding-top: 20px;
+  background-color: #4ABDAC;
+  border-radius: 10px;
+  clear: both;
+  overflow: auto; }
+  .edit-form label, .add-form label {
+    display: inline-block;
+    font-weight: bold;
+    width: 130px;
+    padding: 10px; }
+  .edit-form input[type=text], .add-form input[type=text] {
+    width: 280px; }
+  .edit-form input[type=submit], .add-form input[type=submit] {
+    background-color: #DFDCE3;
+    color: #4ABDAC;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    width: 200px; }
+  .edit-form button, .add-form button {
+    background-color: #DFDCE3;
+    color: #FC4A1A;
+    border: 1px solid #FC4A1A;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    width: 200px; }
