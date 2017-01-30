@@ -3,24 +3,28 @@ import RecipeListItem from './recipe_list_item';
 
 const RecipeList = (props) => {
   const recipeArr = Object.keys(props.recipes);
-  const recipeKeys = recipeArr.map((recipe, index) => {
-    index++;
+  const recipeKeys = recipeArr.map((recipe) => {
     return (
-      <RecipeListItem 
+      <RecipeListItem
         recipe={recipe}
-        key={index}
+        key={recipe.id}
         ingredients={props.recipes[recipe]}
         EditRecipe={props.EditRecipe}
         DeleteRecipe={props.DeleteRecipe}
       />
     );
-  });
+  };
 
   return (
     <div className="recipe-list">
       {recipeKeys}
     </div>
   );
+};
+
+RecipeList.propTypes = {
+  recipes: React.PropTypes.shape.isRequired,
+  DeleteRecipe: React.PropTypes.func.isRequired
 };
 
 export default RecipeList;

@@ -4,6 +4,14 @@ import AddRecipeForm from './components/add_recipe_form';
 import './App.css';
 
 class App extends Component {
+  static displayAddRecipeDialog(id) {
+    if (document.getElementById(id).classList.contains('hidden')) {
+      document.getElementById(id).classList.remove('hidden');
+    } else {
+      document.getElementById(id).classList.add('hidden');
+    }
+  }
+
   constructor(props) {
     super(props);
 
@@ -56,14 +64,6 @@ class App extends Component {
       delete stateHolder[recipe];
       this.setState(stateHolder);
       localStorage.recipes = JSON.stringify(stateHolder);
-    }
-  }
-
-  displayAddRecipeDialog(id) {
-    if (document.getElementById(id).classList.contains('hidden')) {
-      document.getElementById(id).classList.remove('hidden');
-    } else {
-      document.getElementById(id).classList.add('hidden');
     }
   }
 
