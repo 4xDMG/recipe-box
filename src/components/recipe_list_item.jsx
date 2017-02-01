@@ -15,7 +15,7 @@ class RecipeListItem extends Component {
   generateIngredients() {
     return (
       <ul>
-        { this.props.ingredients.map((ingredient) => {
+        { this.props.ingredients.map(function (ingredient) {
           return <IngredientList ingredient={ingredient} key={this.key} />;
         }
         )}
