@@ -13,7 +13,7 @@ const RecipeList = (props) => {
         DeleteRecipe={props.DeleteRecipe}
       />
     );
-  };
+  }
 
   return (
     <div className="recipe-list">

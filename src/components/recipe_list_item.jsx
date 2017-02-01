@@ -8,16 +8,17 @@ class RecipeListItem extends Component {
     super(props);
 
     const recipeId = this.props.recipe.replace(/ /g, '-');
-    const ingredientsId = recipeId + '-Ingredients';
+    const ingredientsId = '{ recipeId }-Ingredients';
     this.state = { recipeId, ingredientsId };
   }
 
   generateIngredients() {
     return (
       <ul>
-        { this.props.ingredients.map((ingredient, index) => {
-          return <IngredientList ingredient={ingredient} key={index} />;
-        })}
+        { this.props.ingredients.map((ingredient) => {
+          return <IngredientList ingredient={ingredient} key={this.key} />;
+        }
+        )}
       </ul>
     );
   }
@@ -31,10 +32,10 @@ class RecipeListItem extends Component {
   }
 
   displayEditIngredients() {
-    this.displayIngredients(this.state.recipeId + '-edit-recipe-dialog');
+    this.displayIngredients('{this.state.recipeId}-edit-recipe-dialog');
     let ingredients = JSON.parse(JSON.stringify(this.props.ingredients));
     ingredients = ingredients.join();
-    document.getElementById(this.state.recipeId + '-ingredients-to-edit').value = ingredients;
+    document.getElementById('{this.state.recipeId}-ingredients-to-edit').value = ingredients;
   }
 
   render() {
@@ -46,12 +47,12 @@ class RecipeListItem extends Component {
         >
           {this.props.recipe}
         </h2>
-        <div id={this.state.ingredientsId} className="recipe-ingredients-item hidden">        
+        <div id={this.state.ingredientsId} className="recipe-ingredients-item hidden">
           {this.generateIngredients()}
-          <button onClick={() => this.displayEditIngredients(this.state.recipeId + "-ingredients-to-edit")} className="edit-btn">Edit</button>
-          <button onClick={() => this.props.DeleteRecipe(this.props.recipe)} className="delete-btn">Delete</button>       
+          <button onClick={() => this.displayEditIngredients('{this.state.recipeId}-ingredients-to-edit')} className="edit-btn">Edit</button>
+          <button onClick={() => this.props.DeleteRecipe(this.props.recipe)} className="delete-btn">Delete</button>
         </div>
-        <EditRecipeForm 
+        <EditRecipeForm
           recipe={this.props.recipe}
           ingredients={this.props.ingredients}
           EditRecipe={this.props.EditRecipe}
@@ -61,5 +62,12 @@ class RecipeListItem extends Component {
   }
 
 }
+
+RecipeListItem.propTypes = {
+  recipe: React.propTypes.string.isRequired,
+  ingredients: React.propTypes.arrayOf.isRequired,
+  DeleteRecipe: React.propTypes.func.isRequired,
+  EditRecipe: React.propTypes.func.isRequired
+};
 
 export default RecipeListItem;

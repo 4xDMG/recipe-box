@@ -6,4 +6,8 @@ const IngredientList = (props) => {
   );
 };
 
+IngredientList.propTypes = {
+  ingredient: React.PropTypes.string.isRequired
+};
+
 export default IngredientList;
