@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class EditRecipeForm extends Component {
+  static CancelEditRecipe(id) {
+    document.getElementById(id).classList.add('hidden');
+  }
+
   constructor(props) {
     super(props);
 
@@ -28,10 +32,6 @@ class EditRecipeForm extends Component {
     this.props.EditRecipe(this.props.recipe, recipe, ingredients);
     document.getElementById(`${this.state.recipeID}-edit-recipe-dialog`).classList.add('hidden');
     event.preventDefault();
-  }
-
-  CancelEditRecipe(id) {
-    document.getElementById(id).classList.add('hidden');
   }
 
   render() {

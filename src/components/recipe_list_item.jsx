@@ -4,6 +4,14 @@ import EditRecipeForm from './edit_recipe_form';
 
 
 class RecipeListItem extends Component {
+  static displayIngredients(recipeId) {
+    if (document.getElementById(recipeId).classList.contains('hidden')) {
+      document.getElementById(recipeId).classList.remove('hidden');
+    } else {
+      document.getElementById(recipeId).classList.add('hidden');
+    }
+  }
+
   constructor(props) {
     super(props);
 
@@ -23,14 +31,6 @@ class RecipeListItem extends Component {
     );
   }
 
-  displayIngredients(id) {
-    if (document.getElementById(id).classList.contains('hidden')) {
-      document.getElementById(id).classList.remove('hidden');
-    } else {
-      document.getElementById(id).classList.add('hidden');
-    }
-  }
-
   displayEditIngredients() {
     this.displayIngredients('{this.state.recipeId}-edit-recipe-dialog');
     let ingredients = JSON.parse(JSON.stringify(this.props.ingredients));
@@ -41,12 +41,13 @@ class RecipeListItem extends Component {
   render() {
     return (
       <div className="recipe-list-item">
-        <h2
+        <a
+          tabIndex="-1"
           id={this.state.recipeId}
           onClick={() => this.displayIngredients(this.state.ingredientsId)}
         >
-          {this.props.recipe}
-        </h2>
+          <h2>{this.props.recipe}</h2>
+        </a>
         <div id={this.state.ingredientsId} className="recipe-ingredients-item hidden">
           {this.generateIngredients()}
           <button onClick={() => this.displayEditIngredients('{this.state.recipeId}-ingredients-to-edit')} className="edit-btn">Edit</button>

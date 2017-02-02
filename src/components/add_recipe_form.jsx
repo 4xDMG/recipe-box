@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class AddRecipeForm extends Component {
+  static CancelAddRecipe(id) {
+    document.getElementById(id).classList.add('hidden');
+  }
+
   constructor(props) {
     super(props);
 
@@ -29,10 +33,6 @@ class AddRecipeForm extends Component {
     this.props.AddNewRecipe(recipe, ingredients);
     document.getElementById('add-recipe-dialog').classList.add('hidden');
     event.preventDefault();
-  }
-
-  CancelAddRecipe(id) {
-    document.getElementById(id).classList.add('hidden');
   }
 
   render() {

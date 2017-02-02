@@ -3,17 +3,14 @@ import RecipeListItem from './recipe_list_item';
 
 const RecipeList = (props) => {
   const recipeArr = Object.keys(props.recipes);
-  const recipeKeys = recipeArr.map((recipe) => {
-    return (
-      <RecipeListItem
-        recipe={recipe}
-        key={recipe.id}
-        ingredients={props.recipes[recipe]}
-        EditRecipe={props.EditRecipe}
-        DeleteRecipe={props.DeleteRecipe}
-      />
-    );
-  }
+  const recipeKeys = recipeArr.map(recipe => <RecipeListItem
+    recipe={recipe}
+    key={recipe.id}
+    ingredients={props.recipes[recipe]}
+    EditRecipe={props.EditRecipe}
+    DeleteRecipe={props.DeleteRecipe}
+  />
+  );
 
   return (
     <div className="recipe-list">
