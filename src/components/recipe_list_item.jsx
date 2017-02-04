@@ -18,6 +18,7 @@ class RecipeListItem extends Component {
     const recipeId = this.props.recipe.replace(/ /g, '-');
     const ingredientsId = '{ recipeId }-Ingredients';
     this.state = { recipeId, ingredientsId };
+    console.log(this.props);
   }
 
   generateIngredients() {

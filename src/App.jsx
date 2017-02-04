@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import RecipeList from './components/recipe_list';
 import AddRecipeForm from './components/add_recipe_form';
-import './App.css';
+import './App.scss';
 
 class App extends Component {
   static displayAddRecipeDialog(id) {
