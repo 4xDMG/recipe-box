@@ -46,7 +46,7 @@ body {
   .recipe-list-item {
     border: 2px solid $sunshine;
     margin-top: 10px;
-    text-algin: left;
+    text-align: center;
 
     ul {
       padding: 10px;
@@ -134,8 +134,12 @@ body {
   label {
     display: inline-block;
     font-weight: bold;
-    width: 150px;
+    width: 130px;
     padding: 10px;
+  }
+
+  input[type=text] {
+    width: 280px;
   }
 
   input[type=submit] {
